@@ -1,6 +1,9 @@
 body {
     background-color: whitesmoke;
 }
+p {
+    text-align: center;
+}
 ol {
     list-style-type: none;
     margin: 0;
