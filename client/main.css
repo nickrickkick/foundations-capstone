@@ -25,6 +25,15 @@ li a:hover {
 h1 {
     text-align: center;
 }
-form {
-    align-items: center;
+div {
+    display: flex;
+    text-align: center;
+    margin-left:25%;
+    margin-right:25%;
+}
+.textCuts {
+    width: 200px;
+}
+.deleteButton {
+    width: 200px;
 }
