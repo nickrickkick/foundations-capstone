@@ -31,9 +31,24 @@ h1 {
 div {
     display: flex;
     text-align: center;
+    justify-content: center;
     margin-left:25%;
     margin-right:25%;
 }
+.animation {
+    background-color: whitesmoke;
+    justify-content: center;
+} 
+.animation:hover {
+    animation-name: backChange;
+    animation-duration: 4s;
+} 
+@keyframes backChange {
+    0%   {background-color: whitesmoke;}
+    25%  {background-color: burlywood;}
+    50%  {background-color: gold;}
+    100% {background-color: goldenrod;}
+  }
 form {
     display: flex;
     flex-direction: column;
