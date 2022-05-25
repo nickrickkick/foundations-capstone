@@ -14,15 +14,15 @@ const sequelize = new Sequelize(CONNECTION_STRING, {
 module.exports = {
     seed: (req, res) => {
         sequelize.query(`
-        drop table if exists users;
         drop table if exists cutting_instructions;
-
+        drop table if exists users;
+       
         create table users (
             user_id serial primary key, 
             username varchar,
             name varchar,
-            password varchar(40),
-            phone_number int
+            password varchar,
+            phone_number bigint
         );
 
         create table cutting_instructions (
@@ -37,9 +37,9 @@ module.exports = {
         insert into users (username, name, password, phone_number)
         values ('phonyMe', 'Kyle', 'badpassword', 8018224311),
         ('clarkdark', 'phil', 'password', 8014356671),
-        ('darkknight', 'chad', 'stupidword', 8014551637).
+        ('darkknight', 'chad', 'stupidword', 8014551637),
         ('fartman', 'tanner', 'badword', 8015554617),
-        ('firesword', 'franny', 'weakword', 8016667866)
+        ('firesword', 'franny', 'weakword', 8016667866);
         `).then(() => {
             console.log('DB seeded!')
             res.sendStatus(200)

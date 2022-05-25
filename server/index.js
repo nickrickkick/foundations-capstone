@@ -12,7 +12,7 @@ app.post('/seed', seed)
 
 app.get('/users', getUsers)
 
-app.post('/cutting', createCutting)
+app.post('/cutting/:id', createCutting)
 app.get('/cutting', getCutting)
 app.delete('/cutting/:id', deleteCutting)
 
