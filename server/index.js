@@ -12,8 +12,8 @@ app.post('/seed', seed)
 
 app.get('/users', getUsers)
 
-app.post('/cutting/:id', createCutting)
-app.get('/cutting', getCutting)
+app.post('/cutting', createCutting)
+app.get('/cutting/:id', getCutting)
 app.delete('/cutting/:id', deleteCutting)
 
 app.listen(SERVER_PORT, () => console.log(`up on ${SERVER_PORT}`))
