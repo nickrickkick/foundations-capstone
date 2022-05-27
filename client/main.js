@@ -7,10 +7,6 @@ const bought = document.getElementById('bought');
 const userId = document.getElementById('userSelect');
 
 
-const update = (cutting, beef, price, bought, userId) => axios.put(`http://localhost:4000/cutting`, {cutting, beef, price, bought, userId}).then(function (res) {
-    alert(res.data)
-  })
-
   function handleSubmit(e) {
     e.preventDefault()
 

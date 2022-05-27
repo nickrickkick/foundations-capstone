@@ -57,8 +57,12 @@ module.exports = {
             .catch(err => console.log(err))
     },
     updateCutting: (req, res) => {
-        sequelize.query(`INSERT INTO cutting_instructions(cutting_style, type_of_beef, price, bought, user_id)
-        VALUES ('${req.body.cutting}', '${req.body.beef}', ${req.body.price}, ${req.body.bought}, ${req.body.userId});`)
+        sequelize.query(`UPDATE cutting_instructions SET
+        cutting_style = COALESCE('${req.body.cutting}', cutting_style),
+        type_of_beef = COALESCE('${req.body.beef}', type_of_beef),
+        price = COALESCE(${req.body.price}, price),
+        bought = COALESCE(${req.body.bought}, bought)
+        WHERE cutting_id = ${req.params.id};`)
             .then(dbRes => res.status(200).send(dbRes[0]))
             .catch(err => console.log(err))
     },
