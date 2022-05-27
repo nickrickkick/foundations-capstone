@@ -46,25 +46,31 @@ module.exports = {
         }).catch(err => console.log('error seeding DB', err))
     },
     getUsers: (req, res) => {
-        sequelize.query(`select name from users`)
+        sequelize.query(`select name, user_id from users`)
             .then(dbRes => res.status(200).send(dbRes[0]))
             .catch(err => console.log(err))
     },
     createCutting: (req, res) => {
         sequelize.query(`INSERT INTO cutting_instructions(cutting_style, type_of_beef, price, bought, user_id)
-        VALUES ('${req.body.cutting}', ${req.body.beef}, ${req.body.price}, ${req.body.bought}, ${req.body.userId});`)
+        VALUES ('${req.body.cutting}', '${req.body.beef}', ${req.body.price}, ${req.body.bought}, ${req.body.userId});`)
+            .then(dbRes => res.status(200).send(dbRes[0]))
+            .catch(err => console.log(err))
+    },
+    updateCutting: (req, res) => {
+        sequelize.query(`INSERT INTO cutting_instructions(cutting_style, type_of_beef, price, bought, user_id)
+        VALUES ('${req.body.cutting}', '${req.body.beef}', ${req.body.price}, ${req.body.bought}, ${req.body.userId});`)
             .then(dbRes => res.status(200).send(dbRes[0]))
             .catch(err => console.log(err))
     },
     getCutting: (req, res) => {
-        sequelize.query(`select cutting_id, cutting_style, type_of_beef, price, bought, users.user_id, name, phone_number
-        from cutting_instructions cutting_id
-        join users name on cutting_instructions.user_id = users.user_id;
-        join users phone_number on cutting_instructions.user_id = users.user_id;`)
+        sequelize.query(`select ci.cutting_id, ci.cutting_style, ci.type_of_beef, ci.price, ci.bought, users.user_id, users.name, users.phone_number
+        from cutting_instructions ci
+        join users on ci.user_id = users.user_id;`)
             .then(dbRes => res.status(200).send(dbRes[0]))
             .catch(err => console.log(err))
     },
     deleteCutting: (req, res) => {
+        console.log(req.params.id);
         sequelize.query(`DELETE FROM cutting_instructions WHERE cutting_id = ${req.params.id};`)
             .then(dbRes => res.status(200).send(dbRes[0]))
             .catch(err => console.log(err))
