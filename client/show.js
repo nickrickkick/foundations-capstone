@@ -9,12 +9,12 @@ function getCuttings() {
         .then(res => {
             res.data.forEach(elem => {
                 let cuttingCard = `<div class="cuttingCard">
-                    <h2>${elem.name}, ${elem.phone_number}</h2>
-                    <h2>cutting id: ${elem.cutting_id}</h2>
-                    <h2>cutting style: ${elem.cutting_style}</h2>
-                    <h2>beef: ${elem.type_of_beef}</h2>
-                    <h2>price: ${elem.price}</h2>
-                    <h2>bought: ${elem.bought}</h2>
+                    <p>${elem.name}, ${elem.phone_number}</p>
+                    <p>cutting id: ${elem.cutting_id}</p>
+                    <p>cutting style: ${elem.cutting_style}</p>
+                    <p>beef: ${elem.type_of_beef}</p>
+                    <p>price: ${elem.price}</p>
+                    <p>bought: ${elem.bought}</p>
                    
                     </div>
                 `
